@@ -1,0 +1,102 @@
+{
+   "short":{
+	  ":musical_note: Music:": 
+			"`En developpement`"
+   		, 
+		":stuck_out_tongue_winking_eye: Fun:": 
+			"`ai (marche a moitié)`, `advice`, `ascii`, `filter`, `quote`, `textart`, `uselessweb`, `wallpaper`"
+		, 
+		":tools: Utility:": 
+			"`convert`, `encode`, `list`, `palette`, `pokedex`, `qr`, `rhyme`, `trace`, `translate`, `server`, `shorten`, `user`, `weather (?)`, `wordinfo`"
+		, 
+		"<a:amongpat:766718738522701855> Meme:": 
+			"`dark`, `drake`, `geek`, `joke`, `pun`, `riddle`, `roast`, `tinder`, `trigger`, `xkcd`"
+		, 
+		":joystick: Game:": 
+			"`2048`, `8ball`, `hangman`, `minesweeper`, `poll`, `rps`, `teams`, `trivia`, `ttt`, `wumpus`"
+		, 
+		":gear: Misc:": 
+			"`clear`, `help`, `invite`, `ping`, `support`"
+   },
+   "full":{
+   		":musical_note: Commandes musicales:": [
+	   			"equalizer     - Utiliser l'EQ", 
+				"lyrics <song> - Obtenir les paroles de la chanson", 
+				"now|np        - Affiche la chanson en cours de lecture", 
+				"pause|resume  - Mettre en pause/reprendre la chanson en cours", 
+				"play|p <song> - Lire la chanson spécifiée", 
+				"queue|q       - Affiche la file d'attente actuelle", 
+				"remove <idx>  - Supprimer la chanson de la file d'attente", 
+				"repeat        - Activer/désactiver la répétition", 
+				"resume        - Reprend la chanson en pause", 
+				"seek          - Rechercher la piste actuelle", 
+				"save|star     - Enregistrer la chanson dans vos favoris", 
+				"shuffle       - Activer/désactiver la lecture aléatoire", 
+				"skip          - Passer la chanson actuelle", 
+				"stop|dis      - Stoppe la musique et déconnecte le bot", 
+				"volume <val>  - Modifie le volume [1-1000]"
+   		], 
+		":stuck_out_tongue_winking_eye: Commandes fun:": [
+				"ai            - Démarrer le chat AI", 
+				"advice        - Obtenez des conseils", 
+				"ascii <link>  - Obtenir l'art ASCII de l'utilisateur/img", 
+				"bored|suggest - Suggestion pour l'ennui", 
+				"filter        - Appliquer des filtres à l'image", 
+				"fortune|quote - Fortune Cookie!", 
+				"    <category>[factoid|fortune|people]", 
+				"textart       - Générer du texte", 
+				"uselessweb    - Obtenir un site Web inutile", 
+				"wallpaper     - Obtenir un fond d'écran"
+		], 
+		":tools: Commandes utiles:": [
+				"convert       - Convertisseur de devises", 
+				"    <val><from><to>", 
+				"encode <txt>  - Encoder et styliser le texte", 
+				"list          - Affiche la liste des", 
+				"                utilisateurs connectés au channel vocal", 
+				"palette <hex> - Obtenir la palette de couleurs", 
+				"pokedex       - Obtenez des informations sur les Pokémon", 
+				"predict <msg> - Analyser le message", 
+				"qr <data>     - Générer un code QR", 
+				"rhyme <word>  - Obtenir des mots qui riment", 
+				"trace <ip>    - Localiser l'adresse IP (fonctionnalité surveillée par l'admin + API CloudFlare)", 
+				"translate     - Traduit le texte", 
+				"    <id><txt>", 
+				"server <serv> - Obtenir des informations sur le serveur", 
+				"shorten|url   - Raccourcir une URL", 
+				"user @user    - Obtenir des informations sur l'utilisateur", 
+				"weather <loc> - Obtenir la météo de votre emplacement", 
+				"wordinfo      - Obtenir des informations sur un mot"
+		], 
+		"<a:amongpat:766718738522701855> Commandes memes (en anglais):": [
+				"joke          - Random Joke", 
+				"                [pun|dark|riddle|geek]", 
+				"roast @user   - Roast this poor guy", 
+				"tinder @u1@u2 - Tinder match", 
+				"trigger @user - Trigger this guy toor", 
+				"xkcd|comic    - Random xkcd/comic"
+		], 
+		":joystick: Jeux:": [
+				"2048          - 2048", 
+				"8ball         - Magic 8Ball!", 
+				"    <question>", 
+				"hangman       - Pendu", 
+				"minesweeper   - Demineur", 
+				"poll          - Sondage rapide", 
+				"    <question> <choices>", 
+				"quiz|trivia   - Start a quiz game", 
+				"rps           - Play Rock, Paper, Scissors", 
+				"teams         - Teams aleatoires", 
+				"toss|flip     - Pile ou face", 
+				"ttt           - Morpion", 
+				"wumpus        - Labyrinthe"
+		], 
+		":gear: Misc  (admin):": [
+				"clear|cls     - Supprime ce message", 
+				"help          - Affiche ce message", 
+				"invite        - Lien d'invitation", 
+				"ping|latency  - Pong!", 
+				"support       - Contacter l'owner"
+		]
+   }
+}
