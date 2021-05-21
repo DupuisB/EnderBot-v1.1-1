@@ -57,7 +57,7 @@ class Misc(commands.Cog):
 		ping = (message.created_at.timestamp() - ctx.message.created_at.timestamp()) * 1000
 		await message.edit(content=f":ping_pong: Pong!\nTook `{int(ping)}ms`\nLatency: `{int(self.bot.latency*1000)}ms`")
 
-	@commands.command(name='weather')
+	@commands.command(name='weatheroff')
 	async def weather(self, ctx, *, location: str = ""):
 		"""Get weather"""
 		if location == "":
@@ -86,7 +86,7 @@ class Misc(commands.Cog):
 	async def currency(self, ctx, value: str="", _from: str="", to: str=""):
 		"""Currency conversion"""
 		if value=="" or _from=="" or to=="":
-			return await ctx.send("Please enter values in proper format\n`~convert [value] [from] [to]`\neg: `~convert 16 usd inr`")
+			return await ctx.send("Please enter values in proper format\n`.convert [value] [from] [to]`\neg: `.convert 16 usd inr`")
 
 		try:
 			async with ctx.typing():

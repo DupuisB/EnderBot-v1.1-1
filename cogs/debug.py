@@ -6,7 +6,6 @@ from contextlib import redirect_stdout
 import datetime
 from speedtest import Speedtest
 from psutil import virtual_memory, cpu_percent, cpu_freq
-
 import aiohttp
 import discord
 from discord.ext import commands

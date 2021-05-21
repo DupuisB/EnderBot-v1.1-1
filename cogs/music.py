@@ -10,6 +10,8 @@ from tools import get_json, is_url
 from re import findall
 from pafy import new
 from replit import db
+import lyricwikia
+from replit import db
 
 class Music(commands.Cog, name='Musique'):
     """
@@ -112,7 +114,7 @@ class Music(commands.Cog, name='Musique'):
     async def get_lyrics(self, ctx, *, query: str):
         """Get lyrics of current song"""
 
-        kclient = ksoftapi.Client(os.environ['Unsplash_Token'])
+        kclient = ksoftapi.Client(os.environ['Kclient'])
 
         try:
             async with ctx.typing():

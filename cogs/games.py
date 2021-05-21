@@ -2,11 +2,9 @@ import os
 import random
 import asyncio
 from games import tictactoe, wumpus, hangman, minesweeper, twenty
-import aiopentdb
 import xkcd
 import ksoftapi
 from jokeapi import Jokes
-
 import discord
 from discord.ext import commands
 from async_timeout import timeout
@@ -73,55 +71,6 @@ class Games(commands.Cog):
 		output = 'Results of the poll for "{}":\n'.format(embed.title) + \
 				'\n'.join(['{}: {}'.format(opt_dict[key], tally[key]) for key in tally.keys()])
 		await ctx.send(output)
-
-	@commands.command(name='quiz', aliases=['trivia'])
-	async def quiz(self, ctx):
-		"""Start an interactive quiz game"""
-		client = aiopentdb.Client()
-		try:
-			async with ctx.typing():
-				question = await client.fetch_questions(
-					amount=1
-					# difficulty=aiopentdb.Difficulty.easy
-				)
-				question = question[0]
-				if question.type.value == 'boolean':
-					options = ['True', 'False']
-				else:
-					options = [question.correct_answer]
-					options.extend(question.incorrect_answers)
-					options = random.sample(options, len(options)) # Shuffle
-				answer = options.index(question.correct_answer)
-
-				if len(options) == 2 and options[0] == 'True' and options[1] == 'False':
-					reactions = ['✅', '❌']
-				else:
-					reactions = ['1⃣', '2⃣', '3⃣', '4⃣']
-
-				description = []
-				for x, option in enumerate(options):
-					description += '\n {} {}'.format(reactions[x], option)
-
-				embed = discord.Embed(title=question.content, description=''.join(description), color=discord.Colour(0xFF9933))
-				embed.set_footer(text='Answer using the reactions below⬇')
-				quiz_message = await ctx.send(embed=embed)
-				for reaction in reactions:
-					await quiz_message.add_reaction(reaction)
-
-			def check(reaction, user):
-				return user != self.bot.user and user == ctx.author and (str(reaction.emoji) == '1️⃣' or '2️⃣' or '3️⃣' or '4️⃣' or '✅' or '❌')
-
-			try:
-				reaction, user = await self.bot.wait_for('reaction_add', timeout=30.0, check=check)
-			except asyncio.TimeoutError:
-				await ctx.send(f"Time's Up! :stopwatch:\nAnswer is **{options[answer]}**")
-			else:
-				if str(reaction.emoji) == reactions[answer]:
-					await ctx.send("Correct answer:sparkles:")
-				else:
-					await ctx.send(f"Wrong Answer :no_entry_sign:\nAnswer is **{options[answer]}**")
-		finally:
-			await client.close()
 
 	@commands.command(name='toss', aliases=['flip'])
 	async def toss(self, ctx):
@@ -219,17 +168,18 @@ class Games(commands.Cog):
 				if ctx.message.content.strip()[1:5].lower() == 'geek':
 					joke = self.jclient.get_joke(category=['programming'], blacklist=blacklist)
 				else:
-					joke = self.jclient.get_joke(category=[f'{ctx.message.content.strip()[1:5]}'], blacklist=blacklist)
+					joke = self.jclient.get_joke(category=["dark"])
 			elif 'riddle' in ctx.message.content:
-				joke = self.jclient.get_joke(type='twopart', blacklist=blacklist)
-				return await ctx.send(f"Q: {joke['setup']}\nA: {joke['delivery']}")
+				joke = self.jclient.get_joke(joke_type='twopart', blacklist=blacklist)
+				return await ctx.send(f"Joke: {joke['setup']}\nA: {joke['delivery']}")
 			else:
 				joke = self.jclient.get_joke(blacklist=blacklist)
 
 			if joke["type"] == "single":
-				await ctx.send(joke['joke'])
+				await ctx.send(joke["joke"])
 			else:
-				await ctx.send(f"{joke['setup']}\n{joke['delivery']}")
+				await ctx.send(joke["setup"])
+				await ctx.send(joke["delivery"])
 		except Exception as e:
 			await ctx.send("Could not get joke for you :disappointed_relieved:")
 			print(e)

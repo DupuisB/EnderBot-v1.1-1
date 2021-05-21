@@ -3,7 +3,6 @@ import asyncio
 import io
 from textwrap import TextWrapper
 from googletrans import Translator, LANGUAGES
-
 import discord
 from discord.ext import commands
 
@@ -13,27 +12,6 @@ class Media(commands.Cog):
 		self.header = {'Authorization': os.environ['Unsplash_Token']}
 		self.trans = Translator()
 		self.client = bot.client
-
-	@commands.command(name='wallpaper', aliases=['wall'])
-	async def _wallpaper(self, ctx, *query: str):
-		"""Get wallpaper from Unsplash"""
-		params = {'count': 1}
-		if query:
-			params['query'] = query
-		else:
-			params['count'] = 3
-			params['featured'] = 'yes'
-		url = 'https://api.unsplash.com/photos/random'
-		async with self.client.get(url, params=params, headers=self.header) as r:
-			if r.status != 200:
-				return await ctx.send('Error getting wallpaper :disappointed_relieved:')
-			else:
-				results = await r.json()
-		for r in results:
-			em = discord.Embed(color=discord.Color(0xFF355E))
-			em.set_image(url=r['urls']['raw'])
-			em.set_footer(text=f"{r['user']['name']} on Unsplash", icon_url='https://i.ibb.co/f4Xbgkv/lens.png')
-			await ctx.send(embed=em)
 
 	@commands.command(name='trigger')
 	async def trigger(self, ctx):

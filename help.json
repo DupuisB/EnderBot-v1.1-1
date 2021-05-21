@@ -1,72 +1,65 @@
 {
    "short":{
 	  ":musical_note: Music:": 
-			"`En developpement`"
+			"`WIP`, `I have API issues, some commands may not work for now in every category`"
    		, 
 		":stuck_out_tongue_winking_eye: Fun:": 
-			"`ai (marche a moitié)`, `advice`, `ascii`, `filter`, `quote`, `textart`, `uselessweb`, `wallpaper`"
+			"`ai (marche a moitié)`, `advice`, `ascii`, `bored`, `filter`, `quote`, `textart`, `uselessweb`, `wallpaper`"
 		, 
 		":tools: Utility:": 
-			"`convert`, `encode`, `list`, `palette`, `pokedex`, `qr`, `rhyme`, `trace`, `translate`, `server`, `shorten`, `user`, `weather (?)`, `wordinfo`"
+			"`convert`, `encode`, `list`, `palette`, `pokedex`, `qr`, `rhyme`, `trace`, `translate (not working)`, `server`, `shorten`, `user`, `weather`, `wordinfo`"
+		,
+		":thermometer_face: Covid-19": 
+			"`cases/stat`, `graph`"
 		, 
 		"<a:amongpat:766718738522701855> Meme:": 
 			"`dark`, `drake`, `geek`, `joke`, `pun`, `riddle`, `roast`, `tinder`, `trigger`, `xkcd`"
 		, 
 		":joystick: Game:": 
 			"`2048`, `8ball`, `hangman`, `minesweeper`, `poll`, `rps`, `teams`, `trivia`, `ttt`, `wumpus`"
-		, 
+		,
+    "<:mc:842327577095176223> Minecraft":
+      "`skin`,`skinfile`,`hypixel`"
+    ,
 		":gear: Misc:": 
-			"`clear`, `help`, `invite`, `ping`, `support`"
+			"`clear`, `help`, `invite`, `ping`, `support`, `speedtest`"
    },
    "full":{
-   		":musical_note: Commandes musicales:": [
-	   			"equalizer     - Utiliser l'EQ", 
-				"lyrics <song> - Obtenir les paroles de la chanson", 
-				"now|np        - Affiche la chanson en cours de lecture", 
-				"pause|resume  - Mettre en pause/reprendre la chanson en cours", 
-				"play|p <song> - Lire la chanson spécifiée", 
-				"queue|q       - Affiche la file d'attente actuelle", 
-				"remove <idx>  - Supprimer la chanson de la file d'attente", 
-				"repeat        - Activer/désactiver la répétition", 
-				"resume        - Reprend la chanson en pause", 
-				"seek          - Rechercher la piste actuelle", 
-				"save|star     - Enregistrer la chanson dans vos favoris", 
-				"shuffle       - Activer/désactiver la lecture aléatoire", 
-				"skip          - Passer la chanson actuelle", 
-				"stop|dis      - Stoppe la musique et déconnecte le bot", 
-				"volume <val>  - Modifie le volume [1-1000]"
-   		], 
+   	":musical_note: Musical commands:": [
+        "Work in progress"
+   	], 
 		":stuck_out_tongue_winking_eye: Commandes fun:": [
-				"ai            - Démarrer le chat AI", 
-				"advice        - Obtenez des conseils", 
-				"ascii <link>  - Obtenir l'art ASCII de l'utilisateur/img", 
-				"bored|suggest - Suggestion pour l'ennui", 
-				"filter        - Appliquer des filtres à l'image", 
-				"fortune|quote - Fortune Cookie!", 
-				"    <category>[factoid|fortune|people]", 
-				"textart       - Générer du texte", 
-				"uselessweb    - Obtenir un site Web inutile", 
-				"wallpaper     - Obtenir un fond d'écran"
+				"ai            - Start AI chat", 
+				"advice        - Random advice", 
+				"ascii <link>  - Ascii art from a user/img", 
+				"bored|suggest - Bored ?", 
+				"filter        - Add filters to an image", 
+				"textart       - Generate text", 
+				"uselessweb    - Useless website", 
+				"wallpaper     - Random wallpaper (not working)"
 		], 
 		":tools: Commandes utiles:": [
-				"convert       - Convertisseur de devises", 
+				"convert       - Device converter", 
 				"    <val><from><to>", 
-				"encode <txt>  - Encoder et styliser le texte", 
-				"list          - Affiche la liste des", 
-				"                utilisateurs connectés au channel vocal", 
-				"palette <hex> - Obtenir la palette de couleurs", 
-				"pokedex       - Obtenez des informations sur les Pokémon", 
-				"predict <msg> - Analyser le message", 
-				"qr <data>     - Générer un code QR", 
-				"rhyme <word>  - Obtenir des mots qui riment", 
-				"trace <ip>    - Localiser l'adresse IP (fonctionnalité surveillée par l'admin + API CloudFlare)", 
-				"translate     - Traduit le texte", 
+				"encode <txt>  - Encode and style the text", 
+				"list          - Voice chat user list",  
+				"palette <hex> - Color palette", 
+				"pokedex       - A pocket pokedex", 
+				"predict <msg> - Message analysis", 
+				"qr <data>     - Generate a QR code", 
+				"rhyme <word>  - Get rhyming words", 
+				"trace <ip>    - Locate IP adress (monitored by the admin  + API CloudFlare)", 
+				"translate     - Text translation", 
 				"    <id><txt>", 
-				"server <serv> - Obtenir des informations sur le serveur", 
-				"shorten|url   - Raccourcir une URL", 
-				"user @user    - Obtenir des informations sur l'utilisateur", 
-				"weather <loc> - Obtenir la météo de votre emplacement", 
-				"wordinfo      - Obtenir des informations sur un mot"
+				"server <serv> - Server informations", 
+				"shorten|url   - URL shortener", 
+				"user @user    - More infos on a user", 
+				"weather <loc> - Get the weather of a location", 
+				"wordinfo      - Get informations on a word [.wordinfo <word>]"
+    ], 
+		"<:thermometer_face: Covid-19": [
+				"cases/stats   - Stats on covid [.stats <location>]", 
+				"graph         - Graph about one or multiple country [.stats <linear/log> <confirmed/recovered/deaths> <country names>]"
 		], 
 		"<a:amongpat:766718738522701855> Commandes memes (en anglais):": [
 				"joke          - Random Joke", 
@@ -80,23 +73,28 @@
 				"2048          - 2048", 
 				"8ball         - Magic 8Ball!", 
 				"    <question>", 
-				"hangman       - Pendu", 
-				"minesweeper   - Demineur", 
-				"poll          - Sondage rapide", 
+				"hangman       - hangman game", 
+				"minesweeper   - Minesweeper game", 
+				"poll          - Quick poll", 
 				"    <question> <choices>", 
 				"quiz|trivia   - Start a quiz game", 
 				"rps           - Play Rock, Paper, Scissors", 
-				"teams         - Teams aleatoires", 
-				"toss|flip     - Pile ou face", 
-				"ttt           - Morpion", 
-				"wumpus        - Labyrinthe"
+				"teams         - Random team", 
+				"toss|flip     - Flip a coin", 
+				"ttt           - Tic Tac Toe", 
+				"wumpus        - Wumpus game"
+    ], 
+		"<:mc:842327577095176223> Minecraft": [
+				"skin <name>   - Get someone's skin", 
+				"skinfile      - Get someone's skinfile [.skinfile <name>] ",
+				"hypixel       - Hypixel stats" 
 		], 
 		":gear: Misc  (admin):": [
-				"clear|cls     - Supprime ce message", 
-				"help          - Affiche ce message", 
-				"invite        - Lien d'invitation", 
+				"clear|cls     - Delete this message", 
+				"help          - Print this message", 
+				"invite        - Invite link", 
 				"ping|latency  - Pong!", 
-				"support       - Contacter l'owner"
+				"support       - Contact the owner"
 		]
    }
 }
