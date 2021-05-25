@@ -2,15 +2,12 @@ import os
 import asyncio
 import io
 from textwrap import TextWrapper
-from googletrans import Translator, LANGUAGES
 import discord
 from discord.ext import commands
 
 class Media(commands.Cog):
 	def __init__(self, bot):
 		self.bot = bot
-		self.header = {'Authorization': os.environ['Unsplash_Token']}
-		self.trans = Translator()
 		self.client = bot.client
 
 	@commands.command(name='trigger')
@@ -94,7 +91,7 @@ class Media(commands.Cog):
 		em.set_image(url=f'https://useless-api--vierofernando.repl.co/tinder?image1={user1}&image2={user2}')
 		await ctx.send(embed=em)
 
-	@commands.command(name='pokemon', aliases=['pokedex'])
+	@commands.command(name='pokemon', aliases=['pokedex', 'poke'])
 	async def _pokemon(self, ctx, *, name=''):
 		"""Get pokemon """
 		if not name:
@@ -176,35 +173,6 @@ class Media(commands.Cog):
 						await ctx.send('Please repeat')
 						continue
 					await ctx.send(response)
-
-	@commands.command(name='translate')
-	async def translate(self, ctx, *args):
-		"""Translator"""
-		if len(args)>0:
-			if args[0]=='--list':
-				lang = ''
-				for l in LANGUAGES:
-					lang = lang+str(l)+' ('+str(LANGUAGES[l]).title()+')\n'
-				embed = discord.Embed(title='List of supported languages', description=str(lang), color=discord.Color(0x5DADEC))
-				await ctx.send(embed=embed)
-			elif len(args)>1:
-				destination = args[0]
-				try:
-					toTrans = ' '.join(args[1:len(args)])
-				except IndexError:
-					await ctx.send('No text to translate :x:')
-				try:
-					async with ctx.typing():
-						translation = self.trans.translate(toTrans, dest=destination)
-					embed = discord.Embed(description=translation.text, color=discord.Color(0x5DADEC))
-					embed.set_footer(text=f'Translated {LANGUAGES[translation.src]} to {LANGUAGES[translation.dest]}.', icon_url='https://i.ibb.co/1np1s8P/translate.png')
-					await ctx.send(embed=embed)
-				except Exception as e:
-					return await ctx.send('Unable to translate :x:\nMaybe language id was wrong')
-			else:
-				await ctx.send(content='Please add a language id\nType `~translate --list` for the list')
-		else:
-			await ctx.send(content='Please add translations\neg.`~translate en Hola`\nType `~translate --list` for supported languages.')
 
 	@commands.command(name='textart', aliases=['au'])
 	async def font_generator(self, ctx, *, text: str=""):

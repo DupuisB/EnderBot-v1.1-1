@@ -7,7 +7,7 @@ authors = ["repl.it user <replituser@example.com>"]
 [tool.poetry.dependencies]
 python = "^3.8"
 flask = "^1.1.2"
-googletrans = "^3.0.0"
+googletrans = "^4.0.0rc1"
 modules = "^1.0.0"
 replit = "^3.0.0"
 aiohttp = "^3.7.4"

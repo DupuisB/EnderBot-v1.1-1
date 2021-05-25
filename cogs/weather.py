@@ -48,7 +48,6 @@ class City_Weather(commands.Cog) :
             city = city.lower()
             result = get_weather(city)
             await ctx.channel.send(embed=result)
-
-
+            
 def setup(bot) :
     bot.add_cog(City_Weather(bot))

@@ -50,7 +50,7 @@ class covid(commands.Cog):
           df_all = self.df[self.df['Country,Other'].str.match('Total:', na=False)][type].values[0]
           return df_all
 
-      #type: 'Country,Other', 'TotalCases', 'TotalDeaths', 'NewDeaths', 'TotalRecovered', 'ActiveCases', 'Serious,Critical'
+#type: 'Country,Other', 'TotalCases', 'TotalDeaths', 'NewDeaths', 'TotalRecovered', 'ActiveCases', 'Serious,Critical'
     def getLocation(self, location, type):
           df_loc = self.df[self.df['Country,Other'].str.match(location, na=False)][type].values[0]
           return df_loc

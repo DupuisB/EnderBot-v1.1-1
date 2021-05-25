@@ -9,6 +9,7 @@ from discord.ext import commands
 from os import environ, listdir
 from utils import canvas
 from keep_alive import keep_alive
+import googletrans
 
 bot = commands.Bot(
     command_prefix=commands.when_mentioned_or("."),
@@ -30,7 +31,7 @@ async def on_ready():
     bot.client = ClientSession()
 
     # Load Modules
-    modules = ['debug', 'games', 'MCServ', 'media', 'misc', 'music', 'Random', 'weather', 'covid','Unsplash',] #'unsplash',
+    modules = ['debug', 'games', 'MCServ', 'media', 'misc', 'music', 'Random', 'weather', 'Unsplash'] #'covid',
     try:
         for module in modules:
             bot.load_extension('cogs.' + module)
@@ -140,6 +141,61 @@ async def help(ctx, arg: str = ''):
         await ctx.send(
             "I do not have the required permission to send embed here :\'('")
 
+
+def get_country(flag):
+    with open("utils/required_data.json", "r") as datafile:
+        jsondata = json.loads(datafile.read())
+
+    for every in jsondata:
+        if every["flag"] == flag:
+            return every
+
+
+@bot.event
+async def on_reaction_add(reaction, user):
+    print("You added a reaction "+reaction.emoji)
+    language = None
+    received_emoji = reaction.emoji
+    country_name = get_country(received_emoji)
+    if country_name is not None:
+        if country_name["name"]["common"] == "France":
+            language = 'fr'
+        elif country_name["name"]["common"] == "Germany":
+            language = 'de'
+        elif country_name["name"]["common"] == "India":
+            language = 'hi'
+        elif country_name["name"]["common"] == "United States":
+            language = 'en'
+        elif country_name["name"]["common"] == "Spain":
+            language = 'es'
+        elif country_name["name"]["common"] == "Russia":
+            language = 'ru'
+        elif country_name["name"]["common"] == "Portugal":
+            language = 'pt'
+        elif country_name["name"]["common"] == "Japan":
+            language = 'ja'
+        else:
+            language = None
+
+        if language is not None:
+            print(language)
+            text = str(reaction.message.content)
+            print(text)
+            translator = googletrans.Translator()
+            translated_text = translator.translate(text, dest=language).text
+            print(translated_text)
+            if language not in googletrans.LANGUAGES and language not in googletrans.LANGCODES:
+              await reaction.message.channel.send("Translation Failed")
+            else:
+              embed = discord.Embed(colour=discord.Colour(0xa6a67a))
+              embed.add_field(name='Translated to:', value=language+ ' (' +received_emoji+')')
+              embed.add_field(name='Translation:', value=translated_text)
+              await reaction.message.channel.send(embed=embed)
+        else:
+            await reaction.message.channel.send("Languages of {} are currently not supported".format(country_name["name"]["common"]))
+    else:
+        print("Normal emoji found exiting")
+    return
 
 # All good ready to start!
 keep_alive()
