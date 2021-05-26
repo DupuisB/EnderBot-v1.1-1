@@ -508,6 +508,14 @@ version = "2.7.0"
 
 [[package]]
 category = "main"
+description = "ISO country, subdivision, language, currency and script definitions and their translations"
+name = "pycountry"
+optional = false
+python-versions = "*"
+version = "20.7.3"
+
+[[package]]
+category = "main"
 description = "C parser in Python"
 name = "pycparser"
 optional = false
@@ -751,7 +759,7 @@ python-versions = "*"
 version = "2021.5.16"
 
 [metadata]
-content-hash = "dba521462312153c4acfeeb558692a843dce8f6d6ca9a511b11fb746b6ab905c"
+content-hash = "22c09009e7010f0db67023f11a41357d4852c394ad09a53c5d917fb0a6e071ec"
 python-versions = "^3.8"
 
 [metadata.files]
@@ -1192,6 +1200,9 @@ py = [
 pycodestyle = [
     {file = "pycodestyle-2.7.0-py2.py3-none-any.whl", hash = "sha256:514f76d918fcc0b55c6680472f0a37970994e07bbb80725808c17089be302068"},
     {file = "pycodestyle-2.7.0.tar.gz", hash = "sha256:c389c1d06bf7904078ca03399a4816f974a1d590090fecea0c63ec26ebaf1cef"},
+]
+pycountry = [
+    {file = "pycountry-20.7.3.tar.gz", hash = "sha256:81084a53d3454344c0292deebc20fcd0a1488c136d4900312cbd465cf552cb42"},
 ]
 pycparser = [
     {file = "pycparser-2.20-py2.py3-none-any.whl", hash = "sha256:7582ad22678f0fcd81102833f60ef8d0e57288b6b5fb00323d101be910e35705"},

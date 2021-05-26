@@ -24,6 +24,7 @@ lyricwikia = "^0.1.11"
 jokeapi = "^0.2.11"
 pandas = "^1.2.4"
 lxml = "^4.6.3"
+pycountry = "^20.7.3"
 
 [tool.poetry.dev-dependencies]
 

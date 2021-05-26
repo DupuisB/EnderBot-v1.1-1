@@ -10,6 +10,10 @@ from os import environ, listdir
 from utils import canvas
 from keep_alive import keep_alive
 import googletrans
+import requests
+
+req = requests.get("https://discord.com/api/path/to/the/endpoint")
+print(req)
 
 bot = commands.Bot(
     command_prefix=commands.when_mentioned_or("."),
@@ -145,10 +149,9 @@ async def help(ctx, arg: str = ''):
 def get_country(flag):
     with open("utils/required_data.json", "r") as datafile:
         jsondata = json.loads(datafile.read())
-
     for every in jsondata:
         if every["flag"] == flag:
-            return every
+            return every["name"]["common"], [every["languages"][i] for i in every["languages"]][0]
 
 
 @bot.event
@@ -156,28 +159,11 @@ async def on_reaction_add(reaction, user):
     print("You added a reaction "+reaction.emoji)
     language = None
     received_emoji = reaction.emoji
-    country_name = get_country(received_emoji)
-    if country_name is not None:
-        if country_name["name"]["common"] == "France":
-            language = 'fr'
-        elif country_name["name"]["common"] == "Germany":
-            language = 'de'
-        elif country_name["name"]["common"] == "India":
-            language = 'hi'
-        elif country_name["name"]["common"] == "United States":
-            language = 'en'
-        elif country_name["name"]["common"] == "Spain":
-            language = 'es'
-        elif country_name["name"]["common"] == "Russia":
-            language = 'ru'
-        elif country_name["name"]["common"] == "Portugal":
-            language = 'pt'
-        elif country_name["name"]["common"] == "Japan":
-            language = 'ja'
-        else:
-            language = None
+    language = get_country(received_emoji)
+    language = str(language[1])
+    language = language.lower()
 
-        if language is not None:
+    if language is not None:
             print(language)
             text = str(reaction.message.content)
             print(text)
@@ -191,11 +177,9 @@ async def on_reaction_add(reaction, user):
               embed.add_field(name='Translated to:', value=language+ ' (' +received_emoji+')')
               embed.add_field(name='Translation:', value=translated_text)
               await reaction.message.channel.send(embed=embed)
-        else:
-            await reaction.message.channel.send("Languages of {} are currently not supported".format(country_name["name"]["common"]))
     else:
-        print("Normal emoji found exiting")
-    return
+            await reaction.message.channel.send("Languages of {} are currently not supported")
+    return 
 
 # All good ready to start!
 keep_alive()
