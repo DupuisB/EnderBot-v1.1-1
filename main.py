@@ -35,7 +35,7 @@ async def on_ready():
     bot.client = ClientSession()
 
     # Load Modules
-    modules = ['debug', 'games', 'MCServ', 'media', 'misc', 'music', 'Random', 'weather', 'Unsplash'] #'covid',
+    modules = ['debug', 'games', 'MCServ', 'media', 'misc', 'music', 'Random', 'weather', 'Unsplash', 'covid'] #'covid',
     try:
         for module in modules:
             bot.load_extension('cogs.' + module)
