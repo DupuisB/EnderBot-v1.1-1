@@ -8,7 +8,6 @@ import discord
 from discord.ext import commands
 from os import environ, listdir
 from utils import canvas
-from keep_alive import keep_alive
 import googletrans
 import requests
 
@@ -182,6 +181,5 @@ async def on_reaction_add(reaction, user):
     return 
 
 # All good ready to start!
-keep_alive()
 print('Starting Bot...')
 bot.run(os.environ['TOKEN'])
